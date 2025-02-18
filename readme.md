@@ -50,16 +50,16 @@ OCI_ImdsWatchdog can be fully automated using the following arguments:
 
 ## Optional parameters for execution:
 
-| Argument      | Parameter            | Description                                                                                        |
-| -----------   | -------------------- | -------------------------------------------------------------------------------------------------- |
-| -auth         | auth_method          | Force an authentication method : 'cs' (cloudshell), 'cf' (config file), 'ip' (instance principals) | 
-| -config_file  | config_file_path     | Path to your OCI config file, default: '~/.oci/config'                                             |
-| -profile      | config_profile       | Config file section to use, default: 'DEFAULT'                                                     | 
-| -su           |                      | If you have tenancy-level admin rights this will allow Root compartment analysis                   | 
-| -comp         | compartment_ocid     | Filter on a compartment for non-admins or admins willing to filter on a specific compartment       | 
-| -region       | region_name          | Region name to analyze, e.g. "eu-frankfurt-1" or "all_regions", default: 'home_region'             | 
-| -update       |                      | Force IMDSv2 only on compute instances                                                             | 
-| -stop         |                      | Force IMDSv1 compute instances to be stopped                                                       | 
+| Argument        | Parameter            | Description                                                                                        |
+| -------------   | -------------------- | -------------------------------------------------------------------------------------------------- |
+| -auth           | auth_method          | Force an authentication method : 'cs' (cloudshell), 'cf' (config file), 'ip' (instance principals) | 
+| -config_file    | config_file_path     | Path to your OCI config file, default: '~/.oci/config'                                             |
+| -profile        | config_profile       | Config file section to use, default: 'DEFAULT'                                                     | 
+| -su             |                      | If you have tenancy-level admin rights this will allow Root compartment analysis                   | 
+| -comp           | compartment_ocid     | Filter on a compartment for non-admins or admins willing to filter on a specific compartment       | 
+| -region         | region_name          | Region name to analyze, e.g. "eu-frankfurt-1" or "all_regions", default: 'home_region'             | 
+| -update         |                      | Force IMDSv2 only on compute instances                                                             | 
+| -stop           |                      | Force IMDSv1 compute instances to be stopped                                                       | 
 
 ## Examples of Usage
 ##### Default :
