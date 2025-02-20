@@ -183,12 +183,11 @@ for region in regions_validated:
             compartment=identity_client.get_compartment(instance.compartment_id).data
             Imds_State="True" if instance.instance_options.are_legacy_imds_endpoints_disabled else "False"
 
-            logging.info(f"{compartment.name} {instance.display_name} {Imds_State}")
-            print(f"{region.region_name[:20]:<25}{compartment.name[:25]:<30}{instance.display_name[:25]:<30}{instance.lifecycle_state[:8]:<10}{Imds_State:<8}")
-
             # If IMDS is set to false (=IMDSv1)
             if not instance.instance_options.are_legacy_imds_endpoints_disabled:
                 IMDSv1 += 1 
+                logging.info(f"{compartment.name} {instance.display_name} {Imds_State}")
+                print(yellow(f"{region.region_name[:20]:<25}{compartment.name[:25]:<30}{instance.display_name[:25]:<30}{instance.lifecycle_state[:8]:<10}{Imds_State:<8}"))
 
                 # Stop IMDSv1 instances if '-stop' option used
                 if args.stop:
@@ -212,11 +211,16 @@ for region in regions_validated:
                     Imds_State="True" if instance.instance_options.are_legacy_imds_endpoints_disabled else "False"
                     logging.info(f"{compartment.name} {instance.display_name} {Imds_State}")
                     print(f"{region.region_name[:20]:<25}{compartment.name[:25]:<30}{instance.display_name[:25]:<30}{instance.lifecycle_state[:8]:<10}{Imds_State:<8}")
+                    IMDSv1 -= 1
+                    IMDSv2 += 1
             else:
+                logging.info(f"{compartment.name} {instance.display_name} {Imds_State}")
+                print(f"{region.region_name[:20]:<25}{compartment.name[:25]:<30}{instance.display_name[:25]:<30}{instance.lifecycle_state[:8]:<10}{Imds_State:<8}")
                 IMDSv2 += 1
         except:
             print(yellow(f"{region.region_name[:20]:<25}{compartment.name[:25]:<30}{instance.display_name[:25]:<30}{'GET_ERROR':<10}{'ERROR':<8}"))
             pass
+
     logging.info(f"IMDSv1 instances in {region.region_name}: {IMDSv1}")
     logging.info(f"IMDSv2 instances in {region.region_name}: {IMDSv2}")
     print(yellow(f"\nIMDSv1 instances in {region.region_name}: {IMDSv1}"))
